@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <div id="confetti">
+      <img
+        src="confetti-transparent-background-png-17.png"
+        alt=""
+        width="100%"
+        height="725px"
+        id="confettiImage"
+      />
+    </div>
+
+    <div id="main">
+      <h1>Akan Day Name Generator</h1>
+      <h2>Get your day name in just 3 steps</h2>
+      <section class="memory-game">
+        <div class="center">
+          <div id="inputField">
+            <form>
+              <fieldset>
+                <label>I was born on a </label><br />
+                <input
+                  type=""
+                  name=""
+                  id="day"
+                  placeholder="Enter day e.g. Monday"
+                  required
+                />
+              </fieldset>
+              <fieldset>
+                <label for=""
+                  >I want a
+                  <input
+                    type="text"
+                    placeholder="Male / Female"
+                    id="gender"
+                    required
+                  />
+                  name</label
+                >
+              </fieldset>
+              <button id="play" onclick="run()">Get name</button>
+            </form>
+          </div>
+          <div id="akanName">
+            <h1 class="firstLine">Your Akan Day Name is</h1>
+            <h1 id="displayText"></h1>
+            <h1>!!!</h1>
+          </div>
+        </div>
+      </section>
+      <div><button id="reset">Reset</button></div>
+    </div>
+
+    <script>
+      let display = document.getElementById('displayText');
+      let play = document.getElementById('play');
+      let reset = document.getElementById('reset');
+      let color = document.getElementById('body');
+      let front = document.getElementById('inputField');
+      let back = document.getElementById('akanName');
+      let confetti = document.getElementById('confettiImage');
+
+      function getMyName(event) {
+        let dayInput = document.getElementById('day').value;
+        let day = dayInput.toUpperCase();
+        let genderInput = document.getElementById('gender').value;
+        let gender = genderInput.toUpperCase();
+
+        event.preventDefault();
+
+        if (day == 'SUNDAY' && gender == 'MALE') {
+          display.innerText = 'Kwasi';
+        } else if (day == 'MONDAY' && gender == 'MALE') {
+          display.innerText = 'Kwadwo';
+        } else if (day == 'TUESDAY' && gender == 'MALE') {
+          display.innerText = 'Kwabena';
+        } else if (day == 'WEDNESDAY' && gender == 'MALE') {
+          display.innerText = 'Kweku';
+        } else if (day == 'THURSDAY' && gender == 'MALE') {
+          display.innerText = 'Yaw';
+        } else if (day == 'FRIDAY' && gender == 'MALE') {
+          display.innerText = 'Kofi';
+        } else if (day == 'SATURDAY' && gender == 'MALE') {
+          display.innerText = 'Kwame';
+        } else if (day == 'SUNDAY' && gender == 'FEMALE') {
+          display.innerText = 'Akosua';
+        } else if (day == 'MONDAY' && gender == 'FEMALE') {
+          display.innerText = 'Adwoa';
+        } else if (day == 'TUESDAY' && gender == 'FEMALE') {
+          display.innerText = 'Abena';
+        } else if (day == 'WEDNESDAY' && gender == 'FEMALE') {
+          display.innerText = 'Akua';
+        } else if (day == 'THURSDAY' && gender == 'FEMALE') {
+          display.innerText = 'Yaa';
+        } else if (day == 'FRIDAY' && gender == 'FEMALE') {
+          display.innerText = 'Efua';
+        } else if (day == 'SATURDAY' && gender == 'FEMALE') {
+          display.innerText = 'Ama';
+        } else {
+          alert('Enter day and preferred gender!! Or check spelling.');
+          confetti.style.display = 'none';
+          location.reload();
+        }
+      }
+      function backGround() {
+        let genderInput = document.getElementById('gender').value;
+        let gender = genderInput.toUpperCase();
+
+        if (gender == 'MALE' && gender) {
+          color.style.backgroundColor = '#0660b4';
+        } else if (gender == 'FEMALE') {
+          color.style.backgroundColor = '#fbc9fe';
+        }
+        front.style.visibility = 'hidden';
+        back.style.visibility = 'visible';
+        confetti.style.visibility = 'visible';
+      }
+      function run() {
+        getMyName(event);
+        backGround();
+      }
+
+      reset.addEventListener('click', function (e) {
+        e.preventDefault();
+        location.reload();
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
